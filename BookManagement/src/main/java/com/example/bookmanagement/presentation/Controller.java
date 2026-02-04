@@ -17,13 +17,11 @@ public class Controller {
 
     @RequestMapping(value = "/books", method = RequestMethod.POST)
     public BookDto createBook(@RequestBody BookDto bookDto) {
-        bookService.add(bookDto);
-
-        return bookDto;
+        return bookService.add(bookDto);
     }
 
     @RequestMapping(value = "/books/{isbn}", method = RequestMethod.GET)
-    public BookDto findBookByIsbn(@PathVariable String isbn) {
+    public BookDto findBookByIsbn(@PathVariable Long isbn) {
         return bookService.findByIsbn(isbn);
     }
 

@@ -2,12 +2,12 @@ package com.example.bookmanagement.presentation;
 
 public class BookDto {
 
-    private String isbn;            //International Standard Book Number
+    private Long isbn;            //International Standard Book Number
     private String title;           //book title
     private String author;          //book author
 
 
-    public String getIsbn() {
+    public Long getIsbn() {
         return isbn;
     }
 
@@ -17,6 +17,10 @@ public class BookDto {
 
     public String getAuthor() {
         return author;
+    }
+
+    public void setIsbn(Long isbn) {
+        this.isbn = isbn;
     }
 
 }

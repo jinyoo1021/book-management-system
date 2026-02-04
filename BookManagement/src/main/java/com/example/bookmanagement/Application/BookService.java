@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 public class BookService {
 
     private ListBookRepository bookRepository;
-
     private ModelMapper modelMapper;
 
     @Autowired
@@ -32,7 +31,7 @@ public class BookService {
         return savedBookDto;
     }
 
-    public BookDto findByIsbn(String isbn) {
+    public BookDto findByIsbn(Long isbn) {
         Book book = bookRepository.findByIsbn(isbn);
         BookDto bookDto = modelMapper.map(book, BookDto.class);
         return bookDto;

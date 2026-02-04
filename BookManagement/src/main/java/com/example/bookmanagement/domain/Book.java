@@ -2,15 +2,16 @@ package com.example.bookmanagement.domain;
 
 public class Book {
 
-    private String isbn;            //International Standard Book Number
+    private Long isbn;            //International Standard Book Number
     private String title;           //book title
     private String author;          //book author
 
-    public void setIsbn(String isbn) {
+    public void setIsbn(Long isbn) {
         this.isbn = isbn;
     }
 
-    public Boolean sameIsbn(String isbn) {
+
+    public Boolean sameIsbn(Long isbn) {
         return this.isbn.equals(isbn);
     }
 }
