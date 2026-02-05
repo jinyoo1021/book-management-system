@@ -49,4 +49,13 @@ public class BookService {
                 .toList();
         return bookDtos;
     }
+
+    // Find books by title
+    public List<BookDto> findByTitle(String title) {
+        List<Book> books = bookRepository.findByTitle(title);
+        List<BookDto> bookDtos = books.stream()
+                .map(book -> modelMapper.map(book, BookDto.class))
+                .toList();
+        return bookDtos;
+    }
 }

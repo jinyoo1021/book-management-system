@@ -29,9 +29,12 @@ public class Controller {
         return bookService.findByIsbn(isbn);
     }
 
-    // Get all books
+    // Get book by title
     @RequestMapping(value = "/books", method = RequestMethod.GET)
-    public List<BookDto> findAllBooks() {
-        return bookService.findAll();
+    public List<BookDto> findBooks(@RequestParam(required = false) String title) {
+        if (title == null) {
+            return bookService.findAll();
+        }
+        return bookService.findByTitle(title);
     }
 }

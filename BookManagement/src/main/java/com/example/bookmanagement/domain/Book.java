@@ -10,8 +10,11 @@ public class Book {
         this.isbn = isbn;
     }
 
-
     public Boolean sameIsbn(Long isbn) {
         return this.isbn.equals(isbn);
+    }
+
+    public Boolean containsTitle(String title) {
+        return this.title.contains(title);
     }
 }

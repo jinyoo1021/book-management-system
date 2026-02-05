@@ -34,4 +34,11 @@ public class ListBookRepository {
             return books;
         }
 
+        // Find books by title
+        public List<Book> findByTitle(String title) {
+            return books.stream()
+                    .filter(book -> book.containsTitle(title))
+                    .toList();
+        }
+
 }
