@@ -14,19 +14,24 @@ public class ListBookRepository {
         private List<Book> books = new ArrayList<>();
         private AtomicLong sequence = new AtomicLong(1L);
 
-
+        // Add a new book
         public Book add(Book book) {
             book.setIsbn(sequence.getAndAdd(1L));
             books.add(book);
             return book;
         }
 
-
+        // Find book by ISBN
         public Book findByIsbn(Long isbn) {
             return books.stream()
                     .filter(book -> book.sameIsbn(isbn))
                     .findFirst()
                     .orElseThrow(() -> new RuntimeException("Book not found"));
+        }
+
+        // Find all books
+        public List<Book> findAll() {
+            return books;
         }
 
 }

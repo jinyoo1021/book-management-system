@@ -6,6 +6,8 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class BookService {
 
@@ -18,6 +20,7 @@ public class BookService {
         this.modelMapper = modelMapper;
     }
 
+    // Add a new book
     public BookDto add(BookDto bookDto) {
         // 1. Convert BookDto to Book entity
         Book book = modelMapper.map(bookDto, Book.class);
@@ -31,9 +34,19 @@ public class BookService {
         return savedBookDto;
     }
 
+    // Find book by ISBN
     public BookDto findByIsbn(Long isbn) {
         Book book = bookRepository.findByIsbn(isbn);
         BookDto bookDto = modelMapper.map(book, BookDto.class);
         return bookDto;
+    }
+
+    // Find all books
+    public List<BookDto> findAll() {
+        List<Book> books = bookRepository.findAll();
+        List<BookDto> bookDtos = books.stream()
+                .map(book -> modelMapper.map(book, BookDto.class))
+                .toList();
+        return bookDtos;
     }
 }
