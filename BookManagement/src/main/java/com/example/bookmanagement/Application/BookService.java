@@ -1,4 +1,5 @@
 package com.example.bookmanagement.Application;
+
 import com.example.bookmanagement.domain.Book;
 import com.example.bookmanagement.infrastructure.ListBookRepository;
 import com.example.bookmanagement.presentation.BookDto;
@@ -57,5 +58,18 @@ public class BookService {
                 .map(book -> modelMapper.map(book, BookDto.class))
                 .toList();
         return bookDtos;
+    }
+
+    // Update book
+    public BookDto update(BookDto bookDto) {
+        Book book = modelMapper.map(bookDto, Book.class);
+        Book updatedBook = bookRepository.update(book);
+        BookDto updatedBookDto = modelMapper.map(updatedBook, BookDto.class);
+        return updatedBookDto;
+    }
+
+    // Delete book
+    public void delete(Long isbn) {
+        bookRepository.delete(isbn);
     }
 }

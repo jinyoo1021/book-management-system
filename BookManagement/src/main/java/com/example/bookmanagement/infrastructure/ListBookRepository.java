@@ -41,4 +41,16 @@ public class ListBookRepository {
                     .toList();
         }
 
+        // Update book
+        public Book update(Book updatedBook) {
+            Integer indexToModify = books.indexOf(updatedBook);
+            books.set(indexToModify, updatedBook);
+            return updatedBook;
+        }
+
+        // Delete book by ISBN
+        public void delete(Long isbn) {
+            Book book = this.findByIsbn(isbn);
+            books.remove(book);
+        }
 }

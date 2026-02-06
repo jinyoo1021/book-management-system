@@ -1,5 +1,7 @@
 package com.example.bookmanagement.domain;
 
+import java.util.Objects;
+
 public class Book {
 
     private Long isbn;            //International Standard Book Number
@@ -17,4 +19,12 @@ public class Book {
     public Boolean containsTitle(String title) {
         return this.title.contains(title);
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Book book = (Book) o;
+        return Objects.equals(isbn, book.isbn);
+    }
+
 }

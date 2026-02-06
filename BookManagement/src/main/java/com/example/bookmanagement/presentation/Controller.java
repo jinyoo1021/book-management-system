@@ -1,7 +1,6 @@
 package com.example.bookmanagement.presentation;
 
 import com.example.bookmanagement.Application.BookService;
-import com.example.bookmanagement.domain.Book;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -36,5 +35,21 @@ public class Controller {
             return bookService.findAll();
         }
         return bookService.findByTitle(title);
+    }
+
+    // update the book
+    @RequestMapping(value = "/books/{isbn}", method = RequestMethod.PUT)
+    public BookDto updatedBook(
+            @PathVariable Long isbn,
+            @RequestBody BookDto bookDto
+    ) {
+        bookDto.setIsbn(isbn);
+        return bookService.update(bookDto);
+    }
+
+    // delete the book
+    @RequestMapping(value = "/books/{isbn}", method = RequestMethod.DELETE)
+    public void deleteBook(@PathVariable Long isbn) {
+        bookService.delete(isbn);
     }
 }
