@@ -14,17 +14,20 @@ public class BookService {
 
     private ListBookRepository bookRepository;
     private ModelMapper modelMapper;
+    private ValidationService validationService;
 
     @Autowired
-    BookService(ListBookRepository bookRepository, ModelMapper modelMapper) {
+    BookService(ListBookRepository bookRepository, ModelMapper modelMapper, ValidationService validationService) {
         this.bookRepository = bookRepository;
         this.modelMapper = modelMapper;
+        this.validationService = validationService;
     }
 
     // Add a new book
     public BookDto add(BookDto bookDto) {
         // 1. Convert BookDto to Book entity
         Book book = modelMapper.map(bookDto, Book.class);
+        validationService.checkValid(book);
 
         // 2. Call repository to add the book
         Book savedBook = bookRepository.add(book);

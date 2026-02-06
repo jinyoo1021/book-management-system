@@ -1,6 +1,7 @@
 package com.example.bookmanagement.presentation;
 
 import com.example.bookmanagement.Application.BookService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,7 +19,7 @@ public class Controller {
 
     // Create a new book
     @RequestMapping(value = "/books", method = RequestMethod.POST)
-    public BookDto createBook(@RequestBody BookDto bookDto) {
+    public BookDto createBook(@Valid @RequestBody BookDto bookDto) {
         return bookService.add(bookDto);
     }
 
