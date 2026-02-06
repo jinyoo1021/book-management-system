@@ -2,6 +2,7 @@ package com.example.bookmanagement.infrastructure;
 
 
 import com.example.bookmanagement.domain.Book;
+import com.example.bookmanagement.domain.EntityNotFoundException;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -26,7 +27,7 @@ public class ListBookRepository {
             return books.stream()
                     .filter(book -> book.sameIsbn(isbn))
                     .findFirst()
-                    .orElseThrow(() -> new RuntimeException("Book not found"));
+                    .orElseThrow(() -> new EntityNotFoundException("Book not found"));
         }
 
         // Find all books
