@@ -12,9 +12,10 @@ public class BookManagementApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(BookManagementApplication.class, args);
+        System.out.println("Book Management Application started successfully.");
     }
 
-
+    // Disable HiddenHttpMethodFilter to prevent interference with HTTP methods
     @Bean
     public ModelMapper modelMapper() {
         ModelMapper modelMapper = new ModelMapper();

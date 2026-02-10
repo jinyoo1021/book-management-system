@@ -1,6 +1,6 @@
 package com.example.bookmanagement.presentation;
 
-import com.example.bookmanagement.Application.BookService;
+import com.example.bookmanagement.application.BookService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

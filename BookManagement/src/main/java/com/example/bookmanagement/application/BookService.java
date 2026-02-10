@@ -1,4 +1,4 @@
-package com.example.bookmanagement.Application;
+package com.example.bookmanagement.application;
 
 import com.example.bookmanagement.domain.Book;
 import com.example.bookmanagement.infrastructure.ListBookRepository;
